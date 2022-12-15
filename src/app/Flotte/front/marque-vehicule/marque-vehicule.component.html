@@ -1,0 +1,132 @@
+<div class="col-xl-12">
+
+    <app-card cardTitle="Liste Marque Véhicule" [options]="false">
+      <button _ngcontent-oip-c126="" type="button" (click)="modalDefaultAjout.show() ;getdata('','')"
+        class="btn btn-info ng-tns-c99-7 feather icon-plus marginbottom"><i _ngcontent-oip-c126=""></i>
+        Nouveau
+      </button>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr class="rechercherligne">
+              <th></th>
+              <th >
+              <!-- <th *ngFor="let key of objectKeys(itemsVariable)"> -->
+                <div class="form-group">
+                  <input type="text" placeholder="Recherche" class="form-control" id="rech">
+                </div>
+              </th>
+  
+              <th>
+                <button _ngcontent-qxg-c126="" type="button" class="btn btn-icon btn-warning ng-tns-c99-9"
+                  (click)="getsearch();">
+                  <i _ngcontent-qxg-c126="" class="feather icon-search"></i>
+                </button>
+                <button _ngcontent-acs-c126="" type="button" class="btn btn-icon btn-secondary ng-tns-c99-9"
+                  (click)="notsearch();">
+                  <i _ngcontent-acs-c126="" class="feather icon-x"></i>
+                </button>
+              </th>
+            </tr>
+            <tr>
+              <th>#</th>
+              <th> libelle </th>
+              <!-- <th *ngFor="let key of objectKeys(itemsVariable)">
+                <div class="th-tableau" (click)="changeCroissante(key)">
+                  {{items[key]}}
+                  <div class="buttons-croissante">
+                    <i class="fas fa-caret-up croissante {{key}}-croissante"></i>
+                    <i class="fas fa-caret-down croissante {{key}}-croissante"></i>
+                  </div>
+                </div>
+              </th> -->
+              <th class="grid-col grid-col--fixed-right" style="background-color:#f6f6f6 ;">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+  
+            <tr *ngFor="let item of dataArray ; index as i">
+              <td>
+                {{i +1 }}
+              </td>
+              <td>
+               {{item.libelle}}
+  
+              </td>
+              <td>
+                  <button _ngcontent-ccb-c126="" type="button"
+                  class="btn btn-icon btn-success ng-tns-c99-9 feather icon-edit"
+                  (click)="modalDefault.show() ; getdata(item.libelle,item._id)">
+                </button>
+  
+                <!-- <button _ngcontent-soa-c126="" type="button"
+                  class="btn btn-icon btn-danger ng-tns-c99-9 feather icon-trash-2"
+                  (click)="supprimertypevehicule(item._id , i)
+                  ">
+                  <i _ngcontent-soa-c126=""></i>
+                </button> -->
+  
+              </td>
+            </tr>
+  
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
+  
+  <!-- modal modif -->
+  <app-ui-modal #modalDefault>
+    <div class="app-modal-header">
+      <h5 class="modal-title">Modifier type véhicule</h5>
+      <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close"
+        (click)="modalDefault.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="app-modal-body">
+      <!-- <form #f="ngForm" (ngSubmit)="modifdata(f)">
+        <div class="form-group">
+          <label for="inputAddress">Libelle</label>
+          <input type="text" class="form-control" placeholder="Enter libelle" required name="libelle"
+            #libellemodif="ngModel" [(ngModel)]="dataTypeVehicule.libelle" ngModel>
+        </div>
+        <div class="alert alert-danger" *ngIf="messageErreur">
+          {{messageErreur}}
+        </div>
+        <div class="alert alert-success" *ngIf="messageSuccess ">
+          {{messageSuccess}}
+        </div>
+        <button type="submit" class="btn btn-primary" id="save" data-dismiss="modalsave">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modalDefault.hide()">Close</button>
+      </form> -->
+    </div>
+  </app-ui-modal>
+  
+  <!--modal ajout-->
+  <app-ui-modal #modalDefaultAjout>
+    <div class="app-modal-header">
+      <h5 class="modal-title">Ajouter Marque Véhicule</h5>
+      <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close"
+        (click)="modalDefaultAjout.hide()"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="app-modal-body">
+      <form #fa="ngForm" (ngSubmit)="(fa)">
+        <div class="form-group">
+          <label for="inputAddress">Libelle</label>
+          <input type="text" class="form-control" placeholder="Enter libelle" required name="libelle"
+            #libelleajout="ngModel" [(ngModel)]="dataMarqueVehicule.libelle" ngModel>
+        </div>
+        <div class="alert alert-danger" *ngIf="messageErreur">
+          {{messageErreur}}
+        </div>
+        <div class="alert alert-success" *ngIf="messageSuccess">
+          {{messageSuccess}}
+        </div>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+          (click)="modalDefaultAjout.hide()">Fermer</button>
+      </form>
+    </div>
+  </app-ui-modal>
+  

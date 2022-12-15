@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-sm-12">
+        <form>
+          <div class="form-group">
+            <label for="inputAddress">Libelle</label>
+            <input type="text" class="form-control" placeholder="Enter libelle" required name="libelle" #libelle="ngModel" ngModel>
+          </div>
+          <div class="alert alert-danger" *ngIf="libelle.errors?.required && libelle.touched" >
+            libelle obligatoire
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
